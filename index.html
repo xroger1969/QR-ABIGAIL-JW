@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão de Contacto - Abigail Brito</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f7f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 450px;
+            text-align: center;
+            border: 1px solid #dfe1e5;
+        }
+
+        h1 {
+            margin: 0 0 20px;
+            font-size: 1.8em;
+            color: #0072CE;
+        }
+
+        p {
+            margin: 8px 0;
+            font-size: 1rem;
+            color: #3c4043;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0072CE;
+            font-weight: bold;
+        }
+
+        button {
+            background-color: #0072CE;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #005bb5;
+        }
+
+        #qrcode {
+            margin-top: 20px;
+            background-color: white;
+            padding: 15px;
+            border: 2px solid #0072CE;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Abigail Brito</h1>
+        <p>Congregação: Monte da Caparica Sul</p>
+        <p>Reuniões:</p>
+        <p>Quinta-feira, 20:30</p>
+        <p>Sábado, 20:00</p>
+        <p>Rua das Quintas, 96</p>
+        <p>2825-021 Monte da Caparica</p>
+        <p>Coordenadas GPS: 38.666374, -9.190140</p>
+        <p><a href="https://apps.jw.org/ui/TPO/meeting-search.html#/?w=7282F687-31DD-46BC-89BB-CA06BF308470" target="_blank">Localizar Reuniões</a></p>
+        <p><a href="https://www.jw.org/pt-pt/" target="_blank">JW.org</a></p>
+
+        <button onclick="generateQRCode()">Gerar QR Code</button>
+        <div id="qrcode"></div>
+    </div>
+
+    <script>
+        function generateQRCode() {
+            document.getElementById('qrcode').innerHTML = '';
+            
+            const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:Abigail Brito
+N:Brito;Abigail;;;
+ORG:Congregação Monte da Caparica Sul
+TEL:917922002
+ADR:;;Rua das Quintas, 96;Caparica;2825-021;Portugal
+URL:https://www.jw.org/pt-pt/
+NOTE:Reuniões às Quinta-feira 20:30 e Sábado 20:00.
+GEO:38.666374,-9.190140
+END:VCARD`;
+
+            const qr = qrcode(0, 'M');
+            qr.addData(vcard);
+            qr.make();
+
+            document.getElementById('qrcode').innerHTML = qr.createImgTag(6);
+        }
+    </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
